@@ -14,28 +14,20 @@ public class Browser {
     private  WebDriver driver; 
     public WebDriver browser;
   
-   public  Browser(){
-       PageFactory.initElements(driver,this);
-   }
-
 	private WebDriver initialise() {
-		
-		System.out.println("Running Test on Browser:" + determindBrowser());
-		setDriverPath(determindBrowser());
-        switch (determindBrowser()) {
-            case "chrome":
-                driver = new ChromeDriver();
-                break;
-            case "firefox":
-            	driver = new FirefoxDriver();
-                break;
-            default: 
-                driver = new FirefoxDriver();
-        }
-       
-        return driver;
-    }
-	
+		String browserType = determindBrowser();
+		System.out.println("Running Test on Browser:" + browserType );
+		setDriverPath(browserType);
+		if (browserType.equalsIgnoreCase("chrome")) {
+			driver = new ChromeDriver();
+		} else if (browserType.equalsIgnoreCase("firefox")) {
+			driver = new FirefoxDriver();
+		} else {
+			driver = new FirefoxDriver();
+		}
+		return driver;
+	}
+
 	public WebDriver openBrowser() {
 		browser = initialise();
 		browser.manage().window().maximize();
