@@ -42,7 +42,7 @@ public class Browser {
 	}
 	
 	private void setDriverPath(String browserType) {
-		if (System.getProperty("os.name").contains("mac")) {
+		if (System.getProperty("os.name").contains("Mac")) {
 			if (browserType.equalsIgnoreCase("chrome")) {
 				 System.setProperty("webdriver.chrome.driver","src/main/resources/binary/mac/chromedriver");
 			} else {
